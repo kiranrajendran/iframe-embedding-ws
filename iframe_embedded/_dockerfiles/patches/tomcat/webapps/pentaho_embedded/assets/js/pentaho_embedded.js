@@ -20,33 +20,6 @@ function() {
 	
 	var isDev_mode=false;
 	
-	//window.mantle_initialized=true;
-	
-	/* window.mantleDragEnd = function(x,y,solution, path, name, localizedFileName){
-
-      if(!SolutionBrowserHelper.extensionRegExp.test(name) || !pentahoDashboardEditor.isEditPanelVisible() ) return;
-      if (localizedFileName == "undefined") localizedFileName = name;
-      var panel = getPanelForCoordinates(x, y);
-      if (!panel) return;
-
-      function dropItem(){
-        SolutionBrowserHelper.createComponentForFile(solution, path, name, localizedFileName);
-      }
-      pentahoDashboardController.panelTitleClick(panel.id, false);
-      var widget = currentWidget;
-      if (widget.htmlObject !== "content-area-" + panel.id) return;
-
-      if(widget.type === "PentahoEmptyWidget") dropItem();
-      else {
-        window.gwtConfirm(
-            pho_messages.getMessage("discard_content", "Discard current content?"), {
-              onOk: dropItem
-            },
-            {title: pho_messages.getMessage("warning.title", "Warning")}
-        );
-      }
-    }*/
-	
 	store = new Persist.Store('Pentaho_Test');
 	
 
@@ -108,15 +81,7 @@ function() {
 		pentahoSrv.logout(function(data) {
 		   dialog.dialog( "close" );
 		   location.reload();
-		});
-		
-		/*$.ajax({
-			url: pentahoSrv.getServerUrl()+"/Logout"
-		}).then(function(data) {
-		   dialog.dialog( "close" );
-		   location.reload();
-		});*/
-        
+		});       
         
       }
       return valid;
@@ -175,7 +140,7 @@ function() {
 			enableAdminToolBar("adminFrame"+id,url);
 			if (url===".xdash"){
 				$("#resourceSelectorDashDiv").empty();
-				pentahoSrv.loadFileList(defaultPath,"*.xanalyzer","resourceSelectorDashDiv",_fileListHandlerForDashboardRes);
+				pentahoSrv.loadFileList(defaultPath,"*.xanalyzer%7C*.prpti","resourceSelectorDashDiv",_fileListHandlerForDashboardRes);
 				$( "#resourceSelectorDashDiv").addClass("show");
 			}
 			
@@ -186,6 +151,10 @@ function() {
 		$( "#toolBox").addClass("show");
 		
 		var defaultPath = getDefaultPath(url);
+		/*remove previous onclick events*/
+		$('#save_button').unbind('click');
+		$('#saveas_button').unbind('click');
+		/*add new handlers*/
 		$("#save_button").click(function() {
 			saveFile(iFrameId,defaultPath);
 		});
@@ -201,7 +170,7 @@ function() {
 		}else if(url===".xanalyzer"){
 			defaultPath=defaultPath+"/Widgets"
 		}else if(url===".prpti"){
-			defaultPath=defaultPath+"/Reports"
+			defaultPath=defaultPath+"/Widgets"
 		}
 		return defaultPath;
 	}
@@ -213,8 +182,7 @@ function() {
 	  }
 	  else {
 		pentahoSrv.saveResource(iFrameId,filename,folderPath);
-		//window.frames[0].handle_puc_save(solutionPath, fileName);
-		//_getFileList(folderPath,"*|FILES");
+		
 	  }
 	}
 	
@@ -256,10 +224,9 @@ function() {
 				$("#demoFrame4").attr('src', "");
 			}else{
 				loadFrame("4",this.value,"view");
-				//$("#demoFrame4")[0].contentWindow.pentahoDashboardController.addWidgetSelectionListener(eventInterceptor)
+
 			}
 			$( "#demoFrame4").addClass("show");
-			//alert('Value change to ' + this.value);
 		});
 	}
 	
@@ -278,13 +245,8 @@ function() {
 		  
 		  var li = $('<li/>')
 			.addClass('widgetSelector-item')
-			//.attr('role', 'menuitem')
 			.text(fileTitle)
 			.appendTo(cList);
-			/*var aaa = $('<a/>')
-				//.addClass('ui-all')
-				.text(fileTitle)
-				.appendTo(li);*/
 				
 			li.click(function(e) {
 				pentahoSrv.addWidgetToDashboard("adminFrame3",solution, filePath, fileName, localizedFileName);
@@ -303,7 +265,7 @@ function() {
 			$(window).load(function() {
 			$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
 			//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
-				alert('You double clicked on '+e.value)
+				//alert('You double clicked on '+e.value)
 			});
 		  });
 		}
@@ -330,9 +292,6 @@ function() {
 		$( "#resourceSelectorDiv").addClass("show");
 		$( "#demoFrame4").addClass("show");
 	});
-	/*setDemoLink(demoFrame,"demo4",base_url+"/api/repos/pentaho-interactive-reporting/prpti.new");
-	setDemoLink(demoFrame,"demo5",base_url+"/api/repos/xanalyzer/editor?showFieldList=true&showFieldLayout=true&catalog=SteelWheels&cube=SteelWheelsSales&autoRefresh=true&showRepositoryButtons=true");*/
-	
 	
 
 	pentahoSrv.login(whenReady,onLoginError);

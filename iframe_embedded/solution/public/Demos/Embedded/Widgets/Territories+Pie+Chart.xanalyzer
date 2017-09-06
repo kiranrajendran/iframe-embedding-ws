@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportRecord xmlns="http://www.pentaho.com">
-    <commonStorageAttributes createdBy="admin" updatedBy="admin" created="2017-08-23T17:19:46.772+02:00" update="2017-08-23T17:20:05.233+02:00">
-        <path name="Territories PieChart2" folder="/public/Demos/Embedded/Widgets/Territories PieChart2.xanalyzer"/>
+    <commonStorageAttributes createdBy="admin" updatedBy="admin" created="2017-09-06T09:50:02.740Z" update="2017-09-06T09:50:02.744Z">
+        <path name="Territories Pie Chart" folder="/public/Demos/Embedded/Widgets/Territories Pie Chart.xanalyzer"/>
     </commonStorageAttributes>
     <report catalog="SteelWheels" cube="SteelWheelsSales" reportTypeEnum="JSON" showRowGrandTotal="false" showColumnGrandTotal="false" useNonVisualTotals="false" showEmptyEnum="SHOW_MEASURE" emptyCellDisplay="-" showDrillLinks="false" version="11" autoRefresh="true" freezeColumns="true" freezeRows="true">
         <measures>
@@ -19,8 +19,12 @@
         <drillColumns/>
     </report>
     <uiAttributes showFieldList="true" showFieldLayout="true" showFilterPanel="false" fieldListView="CMDVIEWCATEGORY">
-        <rowFieldWidths actualWidths="82"/>
-        <columnDataFieldWidths actualWidths=""/>
+        <rowFieldWidths actualWidths="80"/>
+        <columnDataFieldWidths actualWidths="120">
+            <labelWidth index="0">
+                <width>0</width>
+            </labelWidth>
+        </columnDataFieldWidths>
         <pluginData>[{"width":1536,"height":698,"model":{"rows":{"attributes":["[Markets].[Territory]"]},"backgroundColor":"#ffffff","backgroundColorEnd":"#ffffff","labelColor":"#000000","labelSize":12,"labelFontFamily":"Default","legendBackgroundColor":"#ffffff","legendColor":"#000000","legendSize":12,"legendFontFamily":"Default","columns":{},"measures":{"attributes":["[MEASURE:0]"]}}}]</pluginData>
     </uiAttributes>
 </reportRecord>
