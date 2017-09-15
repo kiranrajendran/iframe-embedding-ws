@@ -2,8 +2,8 @@ function PentahoRestApis(serverUrl,pentaho_user,pentaho_pwd){
 	var serverUrl = serverUrl?serverUrl:"http://localhost:8080/pentaho",
 		defaultFrameId = "defaultFrame",
 		defaultSavePath = "/public/Steel Wheels",
-		pentaho_user=pentaho_user?pentaho_user:"user1",
-		pentaho_pwd=pentaho_pwd?pentaho_pwd:"pass"		
+		pentaho_user=pentaho_user?pentaho_user:"suzy",
+		pentaho_pwd=pentaho_pwd?pentaho_pwd:"password"		
 	;		
 	
 	function getLoginToken(){
