@@ -16,10 +16,20 @@ RUN mv /pentaho/solution.zip /pentaho/*server*/pentaho-solutions/system/default-
 #Add patches
 ADD patches/ /pentaho/patches
 
-RUN sudo chown -R pentaho.pentaho /pentaho/patches && \
-		cp -R /pentaho/patches/* /pentaho/*server*/
-	
-	
+RUN \
+    sudo chown -R pentaho.pentaho /pentaho/patches && \
+    cp -R /pentaho/patches/* /pentaho/*server*/ && \
+    mkdir -p /home/pentaho/.kettle && \
+    touch /home/pentaho/.kettle/kettle.properties && \
+    echo MY_DATA_DIR=/pentaho/pentaho-server/tomcat/webapps/pentaho-style/data >> /home/pentaho/.kettle/kettle.properties 
+	#&& \
+	#echo KETTLE_JOB_LOG_DB=SampleData >> /home/pentaho/.kettle/kettle.properties && \
+	#echo KETTLE_JOB_LOG_SCHEMA= >> /home/pentaho/.kettle/kettle.properties && \
+	#echo KETTLE_JOB_LOG_TABLE=my_log_job >> /home/pentaho/.kettle/kettle.properties && \
+	#echo KETTLE_TRANS_LOG_DB=SampleData >> /home/pentaho/.kettle/kettle.properties && \
+	#echo KETTLE_TRANS_LOG_SCHEMA= >> /home/pentaho/.kettle/kettle.properties && \
+	#echo KETTLE_TRANS_LOG_TABLE=my_log_trans >> /home/pentaho/.kettle/kettle.properties
+		
 #Add and install Community Test Editor
 #ADD /dev/cte.zip /pentaho
 #RUN unzip /pentaho/cte.zip -d /pentaho/*server*/pentaho-solutions/system/
@@ -49,4 +59,5 @@ RUN	perl -ibak -p0e 's#(<MimeTypeDefinitions>)#$1<MimeTypeDefinition mimeType="a
 
 # Enable Pentaho Marketplace
 RUN perl -ibak -p0e 's/pentaho-big-data-ee-plugin-osgi-obf/pentaho-big-data-ee-plugin-osgi-obf,pentaho-marketplace/' /pentaho/*server*/pentaho-solutions/system/karaf/etc/org.apache.karaf.features.cfg
+
 

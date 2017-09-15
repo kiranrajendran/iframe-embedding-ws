@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ExportManifest xmlns:ns2="http://www.pentaho.com/schema/">
+    <ExportManifestInformation exportDate="15-09-2017 10:44:05 UTC" exportBy="admin" rootFolder="/" manifestVersion="2"/>
+    <ExportManifestMondrian file="Floormap_Data.mondrian.xml">
+        <catalogName>Floormap_Data</catalogName>
+        <xmlaEnabled>false</xmlaEnabled>
+        <parameters>
+            <entries>
+                <entry key="Provider" value="mondrian"/>
+                <entry key="DataSource" value="pentaho_operations_mart"/>
+                <entry key="EnableXmla" value="false"/>
+            </entries>
+        </parameters>
+    </ExportManifestMondrian>
+	
+	<ExportManifestMetadata domainId="Floormap_Data" file="Floormap_Data.xmi"/>
+	
+</ns2:ExportManifest>

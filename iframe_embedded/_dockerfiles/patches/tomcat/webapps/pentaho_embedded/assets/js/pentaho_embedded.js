@@ -113,14 +113,18 @@ function() {
       dialog.dialog( "open" );
     });
  
-	var allDemoFrames = $( [] ).add( $("#demoFrame1") ).add( $("#demoFrame2") ).add( $("#demoFrame3") ).add( $("#demoFrame4") ).add( $("#demoFrame5")).add($("#resourceSelectorDiv")).add($("#messageBox"));
+	var allDemoFrames = $( [] ).add( $("#demoFrame1") ).add( $("#demoFrame2") ).add( $("#demoFrame3") ).add( $("#demoFrame4") ).add( $("#demoFrame5")).add( $("#demoFrame6") ).add($("#resourceSelectorDiv")).add($("#messageBox"));
     
 	function setDemoLink(id,url){
 		var linkId = "demo"+id;
+		
 		loadFrame(id,url,"view");
 		$( "#"+linkId ).click(function() {
 			allDemoFrames.removeClass("show");
 			$( "#demoFrame"+id).addClass("show");
+			if(id===6){
+				$("#messageBox").html( "<h4>If no data is displayed: remember to load the data once, using the Link  <b>Load Floor Data</b> in the website menu.<br>Then Refresh this page</h4>" ).addClass("show");
+			}
 			
 	    });
 	}
@@ -261,11 +265,12 @@ function() {
 			setDemoLink(1,"/public/Steel Wheels/Sales Performance (dashboard).xdash");
 			setDemoLink(2,"/public/Steel Wheels/Regional Product Mix (dashboard).xdash");
 			setDemoLink(3,"/public/Steel Wheels/Top Customers (report).prpt");
+			setDemoLink(6,"/public/Demos/Embedded/Widgets/Office Utilization.xanalyzer");
 			
 			$(window).load(function() {
 			$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
 			//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
-				//alert('You double clicked on '+e.value)
+				console.log('This javascript function is defined in the external portal. You double clicked on '+e.value)
 			});
 		  });
 		}
