@@ -191,6 +191,7 @@ function() {
 		pentahoSrv.saveResource(iFrameId,filename,folderPath);
 		
 	  }
+	  pentahoSrv.loadFileList(getDefaultPath(".xdash"),"*.xdash","resourceSelectorDiv",_fileListHandler);
 	}
 	
 	function voidAdminCache(){
@@ -263,7 +264,24 @@ function() {
 	  
 	}
 	
+	
+	
+	function addScrollTo(buttonId,targetId){
+		$(buttonId).click(function() {
+			$('html, body').animate({
+				scrollTop: $(targetId).offset().top
+			}, 2000);
+		});
+	}
+	
+
 	function whenReady(){
+		addScrollTo("#link_home","#home");
+		addScrollTo("#link_workshops","#workshops");
+		addScrollTo("#link_features","#features");
+		addScrollTo("#link_about","#about");
+		addScrollTo("#link_contact","#contact");
+		
 		if(!isDev_mode){
 			setDemoLink(1,"/public/Steel Wheels/Sales Performance (dashboard).xdash");
 			setDemoLink(2,"/public/Steel Wheels/Regional Product Mix (dashboard).xdash");
@@ -281,6 +299,8 @@ function() {
 		setAdminLink(1,".prpti");
 		setAdminLink(2,".xanalyzer");
 		setAdminLink(3,".xdash");
+		
+		
 		
 		
 		
