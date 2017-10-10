@@ -1,4 +1,7 @@
-
+/*
+Pentaho - Embedding with Iframe Sample
+Author: Gianluca Natali
+*/
 
 $.fn.preload = function() {
     this.each(function(){
@@ -26,7 +29,7 @@ function() {
 	var username = store.get("pentaho_userid");
 	var pwd = store.get("pentaho_pwd");
 	
-	var pentahoSrv=new PentahoRestApis("http://localhost:8080/pentaho",username,pwd);
+	var pentahoSrv = new PentahoRestApis("http://localhost:8080/pentaho",username,pwd);
 	
 	if(isAdmin(username)){
 		$( ".adminFeature").addClass("show");
@@ -122,9 +125,9 @@ function() {
 		$( "#"+linkId ).click(function() {
 			allDemoFrames.removeClass("show");
 			$( "#demoFrame"+id).addClass("show");
-			if(id===6){
+			/*if(id===6){
 				$("#messageBox").html( "<h4>If no data is displayed: remember to load the data once, using the Link  <b>Load Floor Data</b> in the website menu.<br>Then Refresh this page</h4>" ).addClass("show");
-			}
+			}*/
 			
 	    });
 	}

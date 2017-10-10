@@ -35,6 +35,24 @@ RUN \
 #RUN unzip /pentaho/cte.zip -d /pentaho/*server*/pentaho-solutions/system/
 #RUN rm /pentaho/cte.zip
 
+# Change USER to root
+    USER root
+
+#Configure psql database
+# Add the ddl file
+#    ADD /dev/ddl.sql /pentaho
+# Add the floormap_data dump file
+    ADD /dev/floormap_data.zip /pentaho
+    RUN unzip /pentaho/floormap_data.zip -d /pentaho/
+# Give permissions to the user so that it can connect without using the password  
+    RUN echo "host    all             all             all                 trust" >> /etc/postgresql/9.3/main/pg_hba.conf
+ 
+# Start the database
+# Create the database tables
+    RUN /etc/init.d/postgresql start && \
+	createdb  -U postgres floormap_data && \
+	psql -f /pentaho/floormap_data.sql -h localhost -p 5432 -d floormap_data -U postgres
+ 
 
 
 # Configure mondrian logs

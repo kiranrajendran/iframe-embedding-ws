@@ -7,12 +7,56 @@
         <parameters>
             <entries>
                 <entry key="Provider" value="mondrian"/>
-                <entry key="DataSource" value="pentaho_operations_mart"/>
+                <entry key="DataSource" value="floormap_jdbc"/>
                 <entry key="EnableXmla" value="false"/>
             </entries>
         </parameters>
     </ExportManifestMondrian>
 	
 	<ExportManifestMetadata domainId="Floormap_Data" file="Floormap_Data.xmi"/>
+	
+	 <ExportManifestDatasource>
+        <accessType>NATIVE</accessType>
+        <accessTypeValue>NATIVE</accessTypeValue>
+        <attributes>
+            <entry>
+                <key>PORT_NUMBER</key>
+                <value>5432</value>
+            </entry>
+        </attributes>
+        <changed>false</changed>
+        <connectSql></connectSql>
+        <connectionPoolingProperties/>
+        <dataTablespace></dataTablespace>
+        <databaseName>floormap_data</databaseName>
+        <databasePort>5432</databasePort>
+        <databaseType>
+            <defaultDatabasePort>5432</defaultDatabasePort>
+            <extraOptionsHelpUrl>http://jdbc.postgresql.org/documentation/83/connect.html#connection-parameters</extraOptionsHelpUrl>
+            <name>PostgreSQL</name>
+            <shortName>POSTGRESQL</shortName>
+            <supportedAccessTypes>NATIVE</supportedAccessTypes>
+            <supportedAccessTypes>ODBC</supportedAccessTypes>
+            <supportedAccessTypes>JNDI</supportedAccessTypes>
+        </databaseType>
+        <extraOptions/>
+        <extraOptionsOrder/>
+        <forcingIdentifiersToLowerCase>false</forcingIdentifiersToLowerCase>
+        <forcingIdentifiersToUpperCase>false</forcingIdentifiersToUpperCase>
+        <hostname>localhost</hostname>
+        <id>b5853dd7-5e80-4455-8bb6-2952d15cdee7</id>
+        <indexTablespace></indexTablespace>
+        <informixServername></informixServername>
+        <initialPoolSize>0</initialPoolSize>
+        <maximumPoolSize>0</maximumPoolSize>
+        <name>floormap_jdbc</name>
+        <partitioned>false</partitioned>
+        <password>postgres</password>
+        <quoteAllFields>false</quoteAllFields>
+        <streamingResults>false</streamingResults>
+        <username>postgres</username>
+        <usingConnectionPool>true</usingConnectionPool>
+        <usingDoubleDecimalAsSchemaTableSeparator>false</usingDoubleDecimalAsSchemaTableSeparator>
+    </ExportManifestDatasource>
 	
 </ns2:ExportManifest>

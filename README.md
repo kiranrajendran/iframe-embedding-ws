@@ -2,6 +2,10 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
+
+Dump generated with command
+pg_dump -U postgres -h localhost  -p 5433 -f c:/DOCS/Pentaho/floormap_data.dump floormap_data
+
 ### What is this repository for? ###
 
 * Quick summary

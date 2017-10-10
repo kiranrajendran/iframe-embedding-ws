@@ -1,3 +1,8 @@
+/*
+Pentaho - Embedding with Iframe Sample
+Author: Gianluca Natali
+*/
+
 function PentahoRestApis(serverUrl,pentaho_user,pentaho_pwd){ 
 	var serverUrl = serverUrl?serverUrl:"http://localhost:8080/pentaho",
 		defaultFrameId = "defaultFrame",
