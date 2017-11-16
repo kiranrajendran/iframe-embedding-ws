@@ -62,8 +62,7 @@ RUN perl -ibak -p0e 's#(</log4j:configuration>)#   <category name="mondrian">   
 
 #Set CTools Plugin properties
  RUN perl -ibak -p0e 's/<!--|-->//g' /pentaho/*server*/pentaho-solutions/system/pentaho-cdf-dd/plugin.xml && \
-	sed -i.bak 's/<!--//g;s/-->//g' /pentaho/*server*/pentaho-solutions/system/cda/plugin.xml && \
-	sed -i.bak 's/^<!--//g;s/^-->//g' /pentaho/*server*/pentaho-solutions/system/sparkl/plugin.xml
+	sed -i.bak 's/<!--//g;s/-->//g' /pentaho/*server*/pentaho-solutions/system/cda/plugin.xml
 
 
 
