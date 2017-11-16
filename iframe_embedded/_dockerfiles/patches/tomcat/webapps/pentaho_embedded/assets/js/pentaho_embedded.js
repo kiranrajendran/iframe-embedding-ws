@@ -29,7 +29,7 @@ function() {
 	var username = store.get("pentaho_userid");
 	var pwd = store.get("pentaho_pwd");
 	
-	var pentahoSrv = new PentahoRestApis("http://localhost:8080/pentaho",username,pwd);
+	var pentahoSrv = new PentahoRestApis("/pentaho",username,pwd);
 	
 	if(isAdmin(username)){
 		$( ".adminFeature").addClass("show");

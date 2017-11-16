@@ -117,19 +117,32 @@ a:after {
     background-size: cover;
 }
 
+#headerwrapWs {
+	background: url(../img/header-bg.jpg) no-repeat center top;
+	margin-top: -10px;
+	padding-top:20px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 #headerTitleBar {    
 	background-color: rgba(245, 245, 245, 0.6);
 }
 
-
-#headerwrap.initiationBckg {
-	padding-top:130px;
-	background-image: url(../img/bckgd_1.jpg);
-}
-
-#headerwrap.visualizeBckg {
-	background-image: url(../img/header-bg.jpg);
+#headerwrapWs.visualizeBckg {
+	background-image: url(../img/bckgd_vantara.jpg);
 }
 
 
@@ -307,7 +320,7 @@ p.downloadPDF {
 	background: #ffffff;
 	padding-top: 35px;
 	padding-bottom: 35px;
-	text-align: center;
+	text-align: left;
 }
 
 .lab.alt {
@@ -324,6 +337,11 @@ p.downloadPDF {
 .lab h4 {
 	font-weight: 600;
 	color: #7b7b7b;
+	letter-spacing: 1px;
+}
+
+.lab h4.subtitleP {
+	color: #cc0000;
 	letter-spacing: 1px;
 }
 
@@ -645,7 +663,15 @@ p.downloadPDF {
 	display: inline;
 	position: relative;
 	font-weight:400;
-	color:#325F89;
+	color:#cc0000;
+}
+
+ .editorLink {
+	display: inline;
+	position: relative;
+	font-weight:400;
+	color:#f85c37;
+	cursor:pointer;
 }
 
 
@@ -659,7 +685,7 @@ p.downloadPDF {
 	transition-duration: 800ms; 
 	border-style: groove;
 	border-width: 5px;
-	border-color:#498BCA;
+	border-color:#cc0000;
 }
 
  .showImage:hover img {
@@ -677,10 +703,33 @@ p.downloadPDF {
 	width:647px;
 	height:700px;
 	margin: 0px auto;
+}
+
+
+.resourceDiv{
+	background-color:#eee;
+}
+
+.buttonBar{
+	/*background-color:#fff;*/
+	text-align:center;
+}
+
+
+.reportContainerP{
+	width:100%;
+	height:800px;
+	margin: 0px auto;
 } 
 
 .dashboardContainerViz{
 	width:800px;
+	height:700px;
+	margin: 0px auto;
+} 
+
+.dashboardContainerP{
+	width:100%;
 	height:700px;
 	margin: 0px auto;
 } 
@@ -787,6 +836,10 @@ body.initiationWorkshop .lab{
 
 .widgetSelector{
 	margin-top: 50px;
+}
+
+.widgetSelectorWs{
+	margin-top: 0px;;
 }
 
 li.widgetSelector-item{

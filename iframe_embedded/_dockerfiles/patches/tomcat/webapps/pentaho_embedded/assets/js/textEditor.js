@@ -1,42 +1,53 @@
 function OnlineJsEditor(){ } 
 
+var newwindow;
+
 function openEditor(){
+	//debugger;
+	if(!newwindow||newwindow.closed){
+		url= "textEditor.html";
+		newwindow=window.open(url,'name','height=600,width=600');
+	}
 	
-	url= "textEditor.html";
-	newwindow=window.open(url,'name','height=600,width=600');
 	if (window.focus) {newwindow.focus()}
 	return false;
 }
 
+function reloadEditor(){
+	//debugger;
+	if(newwindow&&!newwindow.closed){
+		newwindow.close();
+	}
+	return openEditor();
+}
+
 $(function() {
+	var storeId = 'jsCodeP';
 	 // load persistent store after the DOM has loaded
 	store = new Persist.Store('Pentaho_Test');
 	
 	OnlineJsEditor.getCode=function(){ 
-			text = store.get('jsCode');
+			text = store.get(storeId);
 			if(text===undefined||text==null||text=="null"){
 							text= 
-`<!--    http://localhost:8081/pentaho/api/repos/%3Apublic%3ASteel%20Wheels%3ASales%20Performance%20(dashboard).xdash/viewer
-        blank_page.html
---> 
-<iframe id="demoFrame" border="0" frameborder="0" src="blank_page.html" style="width: 100%; height: 800px"> 
-	Your browser does not support inline frames or is currently configured not to display inline frames. 
-</iframe> `;
-				store.set('jsCode',text);			
+`<!--    INSERT HERE YOUR CODE--> 
+ `;
+				store.set(storeId,text);			
 			}		
 			return text;
 		};
 
 		OnlineJsEditor.setCode=function(codeStr){ 
-			store.set('jsCode', codeStr);
+			store.set(storeId, codeStr);
 		};
 		
+		/*CODE IS EVALUATED IN workshop_main_editor
 		OnlineJsEditor.evaluateCode=function(){
 			
 			$( "#demoContainer" ).html(OnlineJsEditor.getCode());
 		}
 		
-		OnlineJsEditor.evaluateCode();
+		OnlineJsEditor.evaluateCode();*/
 	
 	
 	

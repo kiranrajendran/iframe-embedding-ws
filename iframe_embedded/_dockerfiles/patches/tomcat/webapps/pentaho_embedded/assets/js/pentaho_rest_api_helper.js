@@ -91,7 +91,8 @@ function PentahoRestApis(serverUrl,pentaho_user,pentaho_pwd){
 		  var url = generateViewContentURL(filePath,"view");
 		  
 		  var liHTML = "<li>" +
-						  "<a href='javascript:void' onclick='setIframeSrc(\"" + url + "\");'>" +
+						  "<a href='" + url + "' target='_blank'>" +
+						//"<a href='javascript:void' onclick='setIframeSrc(\"" + url + "\");'>" +
 							fileTitle +
 						  "</a>" +
 						"</li>";
@@ -172,7 +173,8 @@ function PentahoRestApis(serverUrl,pentaho_user,pentaho_pwd){
 		}).then(function(data) {
 		   functionThen(data);
 		});
-	}
+	};
+	
 	this.logout = function(functionThen){
 		$.ajax({
 			url: serverUrl+"/Logout"
@@ -181,28 +183,42 @@ function PentahoRestApis(serverUrl,pentaho_user,pentaho_pwd){
 		}).then(function(data) {
 		   functionThen(data);
 		});
-	}
+	};
+	
 	this.addWidgetToDashboard = function (iFrameId,solution, path, name, localizedFileName){
 		addWidgetToDashboard(iFrameId,solution, path, name, localizedFileName);
-	}
+	};
 	
 	this.saveResource = function (iFrameId,fileName,folderPath){
 		saveResource(iFrameId,fileName,folderPath);
-	}
+	};
 	
 	this.loadFileList = function(path,filter,containerDivId,resultHandler){
 		_getFileList(path,filter,containerDivId,resultHandler);
-	}
+	};
 	
 	this.generateViewContentURL= function(filePath,action){
 		return generateViewContentURL(filePath,action);
-	}
+	};
 	
 	this.loadResourceInFrame = function (filePath,action,iFrameId){
 		action=action?action:"view";
 		var url=generateViewContentURL(filePath,action);
 		_setIframeSrc(url,iFrameId);
-	}
+	};
+	
+	this.loadResourceInDiv = function(filePath,action,divId){
+		$("#"+divId).html("");
+		$('<iframe>', {
+		   src: '',
+		   id:  divId+'_iframe',
+		   frameborder: 0,
+		   border: 0,
+		   style: 'width:100%;height:100%'
+		   }).appendTo("#"+divId);
+	   this.loadResourceInFrame(filePath,action,divId+'_iframe');
+	};
+	
 	this.setServerUrl= function(url){
 		serverUrl = url;
 	}
