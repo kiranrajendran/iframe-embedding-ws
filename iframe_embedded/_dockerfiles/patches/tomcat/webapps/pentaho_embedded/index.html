@@ -32,10 +32,11 @@ Author: Gianluca Natali
 	<script type="text/javascript">SyntaxHighlighter.all();</script>
 	
 	<!-- Pentaho Embedded -->
+	<script type="text/javascript" src="assets/themes/default/config.js"></script>
 	<script type="text/javascript" src="assets/js/pentaho_embedded.js"></script>
-	<script src="assets/js/persist-min.js" type="text/javascript" ></script>
-	<script src="assets/js/textEditor.js"></script>	
-	<script src="assets/js/pentaho_rest_api_helper.js"></script>	
+	<script type="text/javascript" src="assets/js/persist-min.js" ></script>
+	<script type="text/javascript" src="assets/js/textEditor.js"></script>	
+	<script type="text/javascript" src="assets/js/pentaho_rest_api_helper.js"></script>	
 		
 	
 	<!-- Google Fonts -->
@@ -58,6 +59,7 @@ Author: Gianluca Natali
   </style>
   <script src="assets/js/jquery-ui.min.js"></script>
  
+	<link rel="stylesheet" href="assets/css/overrides_custom.css">
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -103,8 +105,8 @@ Author: Gianluca Natali
 	<div id="headerwrap" class="initiationBckg">
 		<div class="container" id="headerTitleBar">
 			<br>
-			<h1>Steel Wheels</h1>
-			<h2>Partners Portal</h2>
+			<h1  id="homePageTitle"></h1>
+			<h2  id="homePageSubTitle"></h2>
 			<div class="row">
 				<br>
 				<br>
@@ -137,7 +139,7 @@ Author: Gianluca Natali
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-				<h3>WELCOME TO <bold>STEEL WHEELS</bold> PORTAL.
+				<h3 id="introText">WELCOME TO <bold>STEEL WHEELS</bold> PORTAL.
 					<br/>ANALYZE YOUR DATA TO GET USEFUL INSIGHT
 				</h3>
 				</div>
@@ -152,22 +154,22 @@ Author: Gianluca Natali
 			<div class="row workshopTitles">
 				<div class="col-lg-2 workshopActive">
 					<div>
-						<h4><a href="javascript:void(0)" id="demo1">SALES PERFORMANCE</a></h4>
+						<h4><a href="javascript:void(0)" id="demo1"></a></h4>
 					</div>
 				</div>
 				<div class="col-lg-3 workshopActive">
 					<div>
-						<h4><a href="javascript:void(0)" id="demo2">REGIONAL PRODUCT MIX</a></h4>
+						<h4><a href="javascript:void(0)" id="demo2"></a></h4>
 					</div>
 				</div>
 				<div class="col-lg-2 workshopActive">
 					<div>
-						<h4><a href="javascript:void(0)" id="demo3">OPERATIONAL REPORT</a></h4>					
+						<h4><a href="javascript:void(0)" id="demo3"></a></h4>					
 					</div>
 				</div>
 				<div class="col-lg-2 workshopActive">
 					<div>
-						<h4><a href="javascript:void(0)" id="demo6">OFFICE OCCUPANCY</a></h4>
+						<h4><a href="javascript:void(0)" id="demo6"></a></h4>
 					</div>
 				</div>
 				<div class="col-lg-3">
@@ -360,7 +362,7 @@ Author: Gianluca Natali
 				<br>
 				</div>
 			</div>
-			<div class="row">
+			<div id="teamSection" class="row">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8 team">
 					<img class="img-circle" src="assets/img/team01.jpg" height="90" width="90">

@@ -21,7 +21,7 @@ function eventInterceptor(type, ev) {
 $( 
 function() {
 	
-	var isDev_mode=false;
+	
 	
 	store = new Persist.Store('Pentaho_Test');
 	
@@ -30,6 +30,23 @@ function() {
 	var pwd = store.get("pentaho_pwd");
 	
 	var pentahoSrv = new PentahoRestApis("/pentaho",username,pwd);
+	
+	//debugger;
+	var cfgFile= getConfigFile();
+	
+	var isDev_mode=cfgFile.isTest;
+	
+	$("#homePageTitle").html(cfgFile.homePage.title);
+	$("#homePageSubTitle").html(cfgFile.homePage.subTitle);
+	$("#introText").html(cfgFile.homePage.introText);
+	$("#demo1").html(cfgFile.homePage.demoResources.demo1.label);
+	$("#demo2").html(cfgFile.homePage.demoResources.demo2.label);
+	$("#demo3").html(cfgFile.homePage.demoResources.demo3.label);
+	$("#demo6").html(cfgFile.homePage.demoResources.demo6.label);
+	
+	if(!cfgFile.showTeam){
+		$("#teamSection").addClass("hide");
+	}
 	
 	if(isAdmin(username)){
 		$( ".adminFeature").addClass("show");
@@ -171,14 +188,11 @@ function() {
 	}
 	
 	function getDefaultPath(url){
-		var defaultPath = "/public/Demos/Embedded";
-		if(url==".xdash"){
-			defaultPath=defaultPath+"/Dashboards";
-		}else if(url===".xanalyzer"){
-			defaultPath=defaultPath+"/Widgets"
-		}else if(url===".prpti"){
-			defaultPath=defaultPath+"/Widgets"
+		var defaultPath = cfgFile.defaultRepoPath.basePath;
+		if(url==".xdash"||url===".xanalyzer"||url===".prpti"){
+			defaultPath=cfgFile.defaultRepoPath[url];
 		}
+		
 		return defaultPath;
 	}
 	
@@ -274,6 +288,11 @@ function() {
 		});
 	}
 	
+	function getConfigFile(){
+		var theme="default";
+		return portalConfig;
+	}
+	
 
 	function whenReady(){
 		addScrollTo("#link_home","#home");
@@ -283,10 +302,10 @@ function() {
 		addScrollTo("#link_contact","#contact");
 		
 		if(!isDev_mode){
-			setDemoLink(1,"/public/Steel Wheels/Sales Performance (dashboard).xdash");
-			setDemoLink(2,"/public/Steel Wheels/Regional Product Mix (dashboard).xdash");
-			setDemoLink(3,"/public/Steel Wheels/Top Customers (report).prpt");
-			setDemoLink(6,"/public/Demos/Embedded/Widgets/Office Utilization.xanalyzer");
+			setDemoLink(1,cfgFile.homePage.demoResources.demo1.path);
+			setDemoLink(2,cfgFile.homePage.demoResources.demo2.path);
+			setDemoLink(3,cfgFile.homePage.demoResources.demo3.path);
+			setDemoLink(6,cfgFile.homePage.demoResources.demo6.path);
 			
 			$(window).load(function() {
 			$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
@@ -325,11 +344,7 @@ function() {
 	pentahoSrv.login(whenReady,onLoginError);
 	
 	var body = $('#headerwrap.initiationBckg');
-    var backgrounds = [
-      '/pentaho_embedded/assets/img/bckgd_1.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_2.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_3.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_4.jpg'];
+    var backgrounds = cfgFile.homePage.backgrounds;
 	  
 	  $(backgrounds).preload();
     var current = 0;
