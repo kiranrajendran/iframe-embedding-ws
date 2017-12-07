@@ -3,7 +3,7 @@
 <project>
    <paths>
       <left>C:\Users\gnatali\Box Sync\Gianluca Natali\Workspaces\bitbucket\pentaho_cbf2_prj\iframe_embedded\_dockerfiles\patches\tomcat\webapps\pentaho_embedded\</left>
-      <right>C:\Pentaho_7_1\server\pentaho-server\tomcat\webapps\pentaho_embedded\</right>
+      <right>C:\Pentaho80\server\pentaho-server\tomcat\webapps\pentaho_embedded\</right>
       <filter>*.*</filter>
       <subfolders>1</subfolders>
       <left-readonly>0</left-readonly>

@@ -21,6 +21,7 @@ function eventInterceptor(type, ev) {
 $( 
 function() {
 	
+	var body = $('#headerwrap.initiationBckg');
 	
 	
 	store = new Persist.Store('Pentaho_Test');
@@ -30,26 +31,72 @@ function() {
 	var pwd = store.get("pentaho_pwd");
 	
 	var pentahoSrv = new PentahoRestApis("/pentaho",username,pwd);
+	var cfgFile;
 	
-	//debugger;
-	var cfgFile= getConfigFile();
+	var config_url= getConfigFilePath();
+	$.getScript(config_url, function() {
+		cfgFile = portalConfig;
+		whenConfigIsReady();
+	});
 	
-	var isDev_mode=cfgFile.isTest;
-	
-	$("#homePageTitle").html(cfgFile.homePage.title);
-	$("#homePageSubTitle").html(cfgFile.homePage.subTitle);
-	$("#introText").html(cfgFile.homePage.introText);
-	$("#demo1").html(cfgFile.homePage.demoResources.demo1.label);
-	$("#demo2").html(cfgFile.homePage.demoResources.demo2.label);
-	$("#demo3").html(cfgFile.homePage.demoResources.demo3.label);
-	$("#demo6").html(cfgFile.homePage.demoResources.demo6.label);
-	
-	if(!cfgFile.showTeam){
-		$("#teamSection").addClass("hide");
+	function getConfigFilePath(){
+		var theme = getParameterByName("theme");
+		if(theme){
+			store.set("portal_theme",theme);
+		}else{
+			theme = store.get("portal_theme");
+		}
+		
+		theme=theme?theme:"default";
+		var path = 'assets/themes/'+theme+'/config.js';
+		return path;
 	}
 	
-	if(isAdmin(username)){
-		$( ".adminFeature").addClass("show");
+	function whenConfigIsReady(){
+				
+		$("#homePageTitle").html(cfgFile.homePage.title);
+		$("#homePageSubTitle").html(cfgFile.homePage.subTitle);
+		$("#introText").html(cfgFile.homePage.introText);
+		$("#demo1").html(cfgFile.homePage.demoResources.demo1.label);
+		$("#demo2").html(cfgFile.homePage.demoResources.demo2.label);
+		$("#demo3").html(cfgFile.homePage.demoResources.demo3.label);
+		$("#demo6").html(cfgFile.homePage.demoResources.demo6.label);
+		
+		if(!cfgFile.showTeam){
+			$("#teamSection").addClass("hide");
+		}
+		
+		if(isAdmin(username)){
+			$( ".adminFeature").addClass("show");
+		}
+		
+		
+		/*CLICK ON browse resources*/
+		$( "#demo4").click(function() {
+			pentahoSrv.loadFileList(getDefaultPath(".xdash"),"*.xdash","resourceSelectorDiv",_fileListHandler);
+			allDemoFrames.removeClass("show");
+			$( "#resourceSelectorDiv").addClass("show");
+			$( "#demoFrame4").addClass("show");
+		});
+		
+
+		pentahoSrv.login(afterLogin,onLoginError);
+		
+		
+		var backgrounds = cfgFile.homePage.backgrounds;
+		  
+		  $(backgrounds).preload();
+		var current = 0;
+
+		function nextBackground() {
+			body.css(
+				'background-image','url('+
+			backgrounds[current = ++current % backgrounds.length])+')';
+
+			setTimeout(nextBackground, 7000);
+		}
+		setTimeout(nextBackground, 7000);
+		body.css('background-image', 'url('+backgrounds[0])+')';
 	}
 
     var dialog, form,
@@ -288,13 +335,21 @@ function() {
 		});
 	}
 	
-	function getConfigFile(){
-		var theme="default";
-		return portalConfig;
-	}
 	
+	
+	function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
 
-	function whenReady(){
+	function afterLogin(){
+		var isDev_mode=cfgFile.isTest;
+		
 		addScrollTo("#link_home","#home");
 		addScrollTo("#link_workshops","#workshops");
 		addScrollTo("#link_features","#features");
@@ -319,10 +374,6 @@ function() {
 		setAdminLink(2,".xanalyzer");
 		setAdminLink(3,".xdash");
 		
-		
-		
-		
-		
 	}
 	
 	function onLoginError(){
@@ -330,33 +381,8 @@ function() {
 		dialog.dialog( "open" );
 	}
 	
+		
 	
 	
-	/*CLICK ON browse resources*/
-	$( "#demo4").click(function() {
-		pentahoSrv.loadFileList(getDefaultPath(".xdash"),"*.xdash","resourceSelectorDiv",_fileListHandler);
-		allDemoFrames.removeClass("show");
-		$( "#resourceSelectorDiv").addClass("show");
-		$( "#demoFrame4").addClass("show");
-	});
-	
-
-	pentahoSrv.login(whenReady,onLoginError);
-	
-	var body = $('#headerwrap.initiationBckg');
-    var backgrounds = cfgFile.homePage.backgrounds;
-	  
-	  $(backgrounds).preload();
-    var current = 0;
-
-    function nextBackground() {
-        body.css(
-            'background-image','url('+
-        backgrounds[current = ++current % backgrounds.length])+')';
-
-        setTimeout(nextBackground, 7000);
-    }
-    setTimeout(nextBackground, 7000);
-    body.css('background-image', 'url('+backgrounds[0])+')';
 });
 

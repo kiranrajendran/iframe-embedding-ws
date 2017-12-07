@@ -1,0 +1,17 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+
+<svg width="96" height="96" viewBox="0 0 96 96" x="0" y="0">
+	<path fill="none" stroke="#1B3D6F" stroke-width="1" stroke-miterlimit="10" d="M22.7,86.6H11.9c-0.3,0-0.7-0.3-0.7-0.7V61.5
+		c0-0.3,0.3-0.7,0.7-0.7h10.7c0.3,0,0.7,0.3,0.7,0.7V86C23.3,86.3,23,86.6,22.7,86.6z"/>
+	<path fill="none" stroke="#1B3D6F" stroke-width="1" stroke-miterlimit="10" d="M43.3,86.6H32.6c-0.3,0-0.7-0.3-0.7-0.7V51.8
+		c0-0.3,0.3-0.7,0.7-0.7h10.7c0.3,0,0.7,0.3,0.7,0.7V86C43.9,86.3,43.7,86.6,43.3,86.6z"/>
+	<path fill="none" stroke="#1B3D6F" stroke-width="1" stroke-miterlimit="10" d="M64,86.6H53.3c-0.3,0-0.7-0.3-0.7-0.7V42.5
+		c0-0.3,0.3-0.7,0.7-0.7H64c0.3,0,0.7,0.3,0.7,0.7V86C64.6,86.3,64.3,86.6,64,86.6z"/>
+	<path fill="none" stroke="#1B3D6F" stroke-width="1" stroke-miterlimit="10" d="M84.7,86.6H73.9c-0.3,0-0.7-0.3-0.7-0.7V32.6
+		c0-0.3,0.3-0.7,0.7-0.7h10.7c0.3,0,0.7,0.3,0.7,0.7v53.3C85.3,86.3,85,86.6,84.7,86.6z"/>
+	<line fill="none" stroke="#1B3D6F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="9.4" y1="48.5" x2="86.5" y2="12.6"/>
+	<polyline fill="none" stroke="#1B3D6F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		78.4,9.6 86.7,12.6 83.7,20.9 	"/>
+</svg>
+
+</svg>
