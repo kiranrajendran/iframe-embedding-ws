@@ -49,9 +49,9 @@ RUN \
  
 # Start the database
 # Create the database tables
-    RUN /etc/init.d/postgresql start && \
-	createdb  -U postgres floormap_data && \
-	psql -f /pentaho/floormap_data.sql -h localhost -p 5432 -d floormap_data -U postgres
+#    RUN /etc/init.d/postgresql start && \
+#	createdb  -U postgres floormap_data && \
+#	psql -f /pentaho/floormap_data.sql -h localhost -p 5432 -d floormap_data -U postgres
  
 
 
