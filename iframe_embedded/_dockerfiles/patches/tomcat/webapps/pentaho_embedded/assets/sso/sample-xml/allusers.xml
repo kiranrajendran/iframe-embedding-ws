@@ -1,0 +1,20 @@
+<allusers>
+    <tenant id="4">
+         <user>amy</user>
+    </tenant>
+    <tenant id="3">
+         <user>bob</user>
+    </tenant>
+    <tenant id="6">
+         <user>sean</user>
+         <user>james</user>
+         <user>irene</user>
+    </tenant>
+    <tenant id="9">
+         <user>suzy</user>
+    </tenant>
+    <tenant id="ALL">
+         <user>admin</user>
+    </tenant>
+</allusers>
+	

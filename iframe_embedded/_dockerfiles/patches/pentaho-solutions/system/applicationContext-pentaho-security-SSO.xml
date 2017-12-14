@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--+
+	| Application context containing SSO UserRoleListService 
+	| implementation.
+	+-->
+<!-- GN - CHANGED -->
+
+<beans  xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pen="http://www.pentaho.com/schema/pentaho-system"
+  		xmlns:util="http://www.springframework.org/schema/util"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+							http://www.pentaho.com/schema/pentaho-system http://www.pentaho.com/schema/pentaho-system.xsd 
+							http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd"
+		default-lazy-init="true">
+
+
+
+    <bean id="SSOUserRoleListService" class="com.pentaho.sample.sso.token.authentication.SSOUserRoleListService">
+         <property name="ssoAuthApi">
+            <ref bean="SSOAuthApi" />
+        </property>
+
+	    <pen:publish as-type="INTERFACES">
+			<pen:attributes>
+				<pen:attr key="providerName" value="SSO"/>
+			</pen:attributes>
+		</pen:publish>
+	</bean>
+
+    <!-- map external role to Pentaho security role -->
+	<util:map id="SSORoleMap">
+	    <entry key="Admin" value="Administrator"/>
+	</util:map>
+	
+	<bean id="SSORoleMapper"
+		class="org.pentaho.platform.engine.security.DefaultJdbcRoleMapper">
+	   	<constructor-arg>
+	         <ref bean="SSORoleMap"/>
+	   </constructor-arg>
+    </bean> 
+    
+    <bean id="SSOAuthApi"
+        class="com.pentaho.sample.sso.token.authentication.SSOAuthApi">
+        <property name="baseUrl" value="file:///pentaho/pentaho-server/tomcat/webapps/pentaho_embedded/assets/sso/sample-xml"/>
+        <property name="urlAllRoles" value="/allroles.xml"/>
+		<property name="urlAllUsers" value="/allusers.xml"/>
+		<property name="urlUsersInRole" value="/usersinrole.xml"/> 
+		<property name="urlRolesForUser" value="/{secret}.xml"/>  
+    </bean>
+</beans>
