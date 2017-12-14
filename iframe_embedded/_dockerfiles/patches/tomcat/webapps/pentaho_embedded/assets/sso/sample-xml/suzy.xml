@@ -1,0 +1,10 @@
+<user authenticated="true">
+  <name>suzy</name>
+  <roles>
+    <role>Authenticated</role>
+    <role>CTO-9</role>
+  </roles>
+  <tenantid>9</tenantid>
+  <tenantdb>SampleData_PG_Shard1</tenantdb>
+  <userTerritory>EMEA</userTerritory>
+</user>
