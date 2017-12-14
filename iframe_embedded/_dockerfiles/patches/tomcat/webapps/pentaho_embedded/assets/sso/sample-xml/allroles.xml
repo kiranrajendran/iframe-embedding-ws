@@ -1,0 +1,54 @@
+<allroles>
+    <tenant id="0">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-0</role>
+	 </tenant>
+    <tenant id="1">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-1</role>
+	 </tenant>
+    <tenant id="2">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-2</role>
+	 </tenant>
+    <tenant id="3">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-3</role>
+	 </tenant>
+    <tenant id="4">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-4</role>
+	 </tenant>
+    <tenant id="5">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-5</role>
+	 </tenant>
+    <tenant id="6">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>Report Author</role>
+	    <role>CTO-6</role>
+	 </tenant>
+    <tenant id="7">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-7</role>
+	 </tenant>
+    <tenant id="8">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-8</role>
+	 </tenant>
+    <tenant id="9">
+	    <role>Authenticated</role>
+	    <role>Administrator</role>
+	    <role>CTO-9</role>
+	 </tenant>
+</allroles>
+	

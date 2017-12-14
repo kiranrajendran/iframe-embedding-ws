@@ -1,0 +1,23 @@
+<usersinrole>
+	<Authenticated>
+		<user>amy</user>
+		<user>bob</user>
+		<user>irene</user>
+		<user>james</user>
+		<user>sean</user>
+		<user>suzy</user>
+		<user>admin</user>
+	</Authenticated>
+	<Administrator>
+		<user>admin</user>
+	</Administrator>
+	<CTO-4>
+		<user>amy</user>
+	</CTO-4>
+	<CTO-9>
+		<user>suzy</user>
+	</CTO-9>
+	<Report Author>
+		<user>sean</user>
+	</Report Author>
+</usersinrole>

@@ -1,0 +1,9 @@
+<user authenticated="true">
+  <name>bob</name>
+  <roles>
+    <role>Authenticated</role>
+  </roles>
+  <tenantid>3</tenantid>
+  <tenantdb>SampleData_PG_Shard1</tenantdb>
+  <userTerritory>APAC</userTerritory>
+</user>
