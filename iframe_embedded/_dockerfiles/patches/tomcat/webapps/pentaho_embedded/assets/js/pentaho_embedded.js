@@ -21,7 +21,8 @@ function eventInterceptor(type, ev) {
 $( 
 function() {
 	
-	var isDev_mode=false;
+	var body = $('#headerwrap.initiationBckg');
+	
 	
 	store = new Persist.Store('Pentaho_Test');
 	
@@ -30,9 +31,74 @@ function() {
 	var pwd = store.get("pentaho_pwd");
 	
 	var pentahoSrv = new PentahoRestApis("/pentaho",username,pwd);
+	var cfgFile;
 	
-	if(isAdmin(username)){
-		$( ".adminFeature").addClass("show");
+	var config_url= getConfigFilePath();
+	$.getScript(config_url+"/config.js", function() {
+		cfgFile = portalConfig;
+		whenConfigIsReady(config_url);
+	});
+	
+	function getConfigFilePath(){
+		var theme = getParameterByName("theme");
+		if(theme){
+			store.set("portal_theme",theme);
+		}else{
+			theme = store.get("portal_theme");
+		}
+		
+		theme=theme?theme:"default";
+		var path = 'assets/themes/'+theme;
+		return path;
+	}
+	
+	function whenConfigIsReady(config_url){
+				
+		$("#homePageTitle").html(cfgFile.homePage.title);
+		$("#homePageSubTitle").html(cfgFile.homePage.subTitle);
+		$("#introText").html(cfgFile.homePage.introText);
+		$("#demo1").html(cfgFile.homePage.demoResources.demo1.label);
+		$("#demo2").html(cfgFile.homePage.demoResources.demo2.label);
+		$("#demo3").html(cfgFile.homePage.demoResources.demo3.label);
+		$("#demo6").html(cfgFile.homePage.demoResources.demo6.label);
+		
+		if(!cfgFile.showTeam){
+			$("#teamSection").addClass("hide");
+		}
+		
+		if(isAdmin(username)){
+			$( ".adminFeature").addClass("show");
+		}
+		
+		$("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href='"+config_url+"/overrides_styles.css' type='text/css' media='screen'>");
+		
+		
+		/*CLICK ON browse resources*/
+		$( "#demo4").click(function() {
+			pentahoSrv.loadFileList(getDefaultPath(".xdash"),"*.xdash","resourceSelectorDiv",_fileListHandler);
+			allDemoFrames.removeClass("show");
+			$( "#resourceSelectorDiv").addClass("show");
+			$( "#demoFrame4").addClass("show");
+		});
+		
+
+		pentahoSrv.login(afterLogin,onLoginError);
+		
+		
+		var backgrounds = cfgFile.homePage.backgrounds;
+		  
+		  $(backgrounds).preload();
+		var current = 0;
+
+		function nextBackground() {
+			body.css(
+				'background-image','url('+
+			backgrounds[current = ++current % backgrounds.length])+')';
+
+			setTimeout(nextBackground, 7000);
+		}
+		setTimeout(nextBackground, 7000);
+		body.css('background-image', 'url('+backgrounds[0])+')';
 	}
 
     var dialog, form,
@@ -171,14 +237,11 @@ function() {
 	}
 	
 	function getDefaultPath(url){
-		var defaultPath = "/public/Demos/Embedded";
-		if(url==".xdash"){
-			defaultPath=defaultPath+"/Dashboards";
-		}else if(url===".xanalyzer"){
-			defaultPath=defaultPath+"/Widgets"
-		}else if(url===".prpti"){
-			defaultPath=defaultPath+"/Widgets"
+		var defaultPath = cfgFile.defaultRepoPath.basePath;
+		if(url==".xdash"||url===".xanalyzer"||url===".prpti"){
+			defaultPath=cfgFile.defaultRepoPath[url];
 		}
+		
 		return defaultPath;
 	}
 	
@@ -274,8 +337,21 @@ function() {
 		});
 	}
 	
+	
+	
+	function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
 
-	function whenReady(){
+	function afterLogin(){
+		var isDev_mode=cfgFile.isTest;
+		
 		addScrollTo("#link_home","#home");
 		addScrollTo("#link_workshops","#workshops");
 		addScrollTo("#link_features","#features");
@@ -283,26 +359,22 @@ function() {
 		addScrollTo("#link_contact","#contact");
 		
 		if(!isDev_mode){
-			setDemoLink(1,"/public/Steel Wheels/Sales Performance (dashboard).xdash");
-			setDemoLink(2,"/public/Steel Wheels/Regional Product Mix (dashboard).xdash");
-			setDemoLink(3,"/public/Steel Wheels/Top Customers (report).prpt");
-			setDemoLink(6,"/public/Demos/Embedded/Widgets/Office Utilization.xanalyzer");
+			setDemoLink(1,cfgFile.homePage.demoResources.demo1.path);
+			setDemoLink(2,cfgFile.homePage.demoResources.demo2.path);
+			setDemoLink(3,cfgFile.homePage.demoResources.demo3.path);
+			setDemoLink(6,cfgFile.homePage.demoResources.demo6.path);
 			
 			$(window).load(function() {
-			$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
-			//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
-				console.log('This javascript function is defined in the external portal. You double clicked on '+e.value)
+				$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
+				//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
+					console.log('This javascript function is defined in the external portal. You double clicked on '+e.value)
+				});
 			});
-		  });
 		}
 			
 		setAdminLink(1,".prpti");
 		setAdminLink(2,".xanalyzer");
 		setAdminLink(3,".xdash");
-		
-		
-		
-		
 		
 	}
 	
@@ -311,37 +383,8 @@ function() {
 		dialog.dialog( "open" );
 	}
 	
+		
 	
 	
-	/*CLICK ON browse resources*/
-	$( "#demo4").click(function() {
-		pentahoSrv.loadFileList(getDefaultPath(".xdash"),"*.xdash","resourceSelectorDiv",_fileListHandler);
-		allDemoFrames.removeClass("show");
-		$( "#resourceSelectorDiv").addClass("show");
-		$( "#demoFrame4").addClass("show");
-	});
-	
-
-	pentahoSrv.login(whenReady,onLoginError);
-	
-	var body = $('#headerwrap.initiationBckg');
-    var backgrounds = [
-      '/pentaho_embedded/assets/img/bckgd_1.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_2.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_3.jpg', 
-	  '/pentaho_embedded/assets/img/bckgd_4.jpg'];
-	  
-	  $(backgrounds).preload();
-    var current = 0;
-
-    function nextBackground() {
-        body.css(
-            'background-image','url('+
-        backgrounds[current = ++current % backgrounds.length])+')';
-
-        setTimeout(nextBackground, 7000);
-    }
-    setTimeout(nextBackground, 7000);
-    body.css('background-image', 'url('+backgrounds[0])+')';
 });
 

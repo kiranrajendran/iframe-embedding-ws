@@ -12,7 +12,7 @@
             <attribute formula="[Product].[Line]" showSubtotal="false" sortOrderEnum="ASC" gembarId="category" gembarOrdinal="0"/>
         </rowAttributes>
         <filters/>
-        <chartOptions vizApiVersion="3.0" chartType="CUSTOM" customChartType="pentaho-visual-samples-svg_0.0.1/model" legendPosition="RIGHT" showLegend="true" autoRange="true" displayUnits="UNITS_0" autoRangeSecondary="true" displayUnitsSecondary="UNITS_0" lineWidth="2" lineShape="CIRCLE" maxValues="100" backgroundColor="#ffffff" labelColor="#000000" labelSize="12" backgroundFill="NONE" maxChartsPerRow="3" backgroundColorEnd="#ffffff" labelStyle="PLAIN" legendBackgroundColor="#ffffff" legendSize="12" legendColor="#000000" legendStyle="PLAIN" labelFontFamily="Default" legendFontFamily="Default"/>
+        <chartOptions vizApiVersion="3.0" chartType="CUSTOM" customChartType="pentaho-visual-samples-svg_0.0.1/modelProductLine" legendPosition="RIGHT" showLegend="true" autoRange="true" displayUnits="UNITS_0" autoRangeSecondary="true" displayUnitsSecondary="UNITS_0" lineWidth="2" lineShape="CIRCLE" maxValues="100" backgroundColor="#ffffff" labelColor="#000000" labelSize="12" backgroundFill="NONE" maxChartsPerRow="3" backgroundColorEnd="#ffffff" labelStyle="PLAIN" legendBackgroundColor="#ffffff" legendSize="12" legendColor="#000000" legendStyle="PLAIN" labelFontFamily="Default" legendFontFamily="Default"/>
         <selectionFilters/>
         <selectionItems/>
         <pageSetup excelPageSize="LETTER" pdfPageSize="LETTER" excelOrientation="LANDSCAPE" pdfOrientation="LANDSCAPE" excelScalingType="PERCENT" excelScalingPercent="100" excelScalingPageWide="1" excelScalingPageTall="1" csvIncludeSubtotals="true" csvFormatNumbers="true"/>
@@ -21,6 +21,6 @@
     <uiAttributes showFieldList="true" showFieldLayout="true" showFilterPanel="false" fieldListView="CMDVIEWCATEGORY">
         <rowFieldWidths/>
         <columnDataFieldWidths/>
-        <pluginData>[{"width":1631,"height":860,"model":{"_":"pentaho-visual-samples-svg_0.0.1/model","category":{"attributes":["[Product].[Line]"]},"measure":{"attributes":["[MEASURE:0]"]}}}]</pluginData>
+        <pluginData>[{"width":1631,"height":860,"model":{"_":"pentaho-visual-samples-svg_0.0.1/modelProductLine","category":{"attributes":["[Product].[Line]"]},"measure":{"attributes":["[MEASURE:0]"]}}}]</pluginData>
     </uiAttributes>
 </reportRecord>

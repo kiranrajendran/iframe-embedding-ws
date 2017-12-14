@@ -97,7 +97,7 @@ a:after {
    ========================================================================== */
 
 #headerwrap {
-	background: url(../img/header-bg.jpg) no-repeat center top;
+	background: url(../img/bckgd_2.jpg) no-repeat center top;
 	margin-top: -10px;
 	padding-top:20px;
 	text-align:center;
@@ -118,7 +118,7 @@ a:after {
 }
 
 #headerwrapWs {
-	background: url(../img/header-bg.jpg) no-repeat center top;
+	background: url(../img/bckgd_2.jpg) no-repeat center top;
 	margin-top: -10px;
 	padding-top:20px;
 	text-align:center;
@@ -858,3 +858,11 @@ li.widgetSelector-item{
 
 
 /*ADDING LOGIN POPUP*/
+
+ .command_help{
+	display:none; 
+ }
+ 
+ .hide{
+	 display:none;
+ }
