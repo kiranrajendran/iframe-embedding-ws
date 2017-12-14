@@ -10,8 +10,8 @@ MAINTAINER  João Gameiro <jgameiro@pentaho.com>
 # these instructions
 
 # Add the solution
-ADD solution.zip /pentaho
-RUN mv /pentaho/solution.zip /pentaho/*server*/pentaho-solutions/system/default-content/
+#ADD solution.zip /pentaho
+#RUN mv /pentaho/solution.zip /pentaho/*server*/pentaho-solutions/system/default-content/
 
 #Add patches
 ADD patches/ /pentaho/patches
@@ -42,8 +42,8 @@ RUN \
 # Add the ddl file
 #    ADD /dev/ddl.sql /pentaho
 # Add the floormap_data dump file
-    ADD /dev/floormap_data.zip /pentaho
-    RUN unzip /pentaho/floormap_data.zip -d /pentaho/
+#    ADD /dev/floormap_data.zip /pentaho
+#    RUN unzip /pentaho/floormap_data.zip -d /pentaho/
 # Give permissions to the user so that it can connect without using the password  
     RUN echo "host    all             all             all                 trust" >> /etc/postgresql/9.3/main/pg_hba.conf
  
