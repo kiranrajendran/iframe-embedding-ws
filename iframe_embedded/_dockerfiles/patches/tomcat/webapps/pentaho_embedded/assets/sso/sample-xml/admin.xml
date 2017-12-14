@@ -1,0 +1,11 @@
+<user authenticated="true">
+  <name>admin</name>
+  <roles>
+    <role>Authenticated</role>
+    <role>Administrator</role>
+    <role>CTO</role>
+  </roles>
+  <tenantid/>
+  <tenantdb>SampleData_PG_Full</tenantdb>
+  <userTerritory>NA</userTerritory>
+</user>
