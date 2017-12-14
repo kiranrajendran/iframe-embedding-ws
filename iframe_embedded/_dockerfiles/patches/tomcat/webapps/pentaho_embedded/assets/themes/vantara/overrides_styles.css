@@ -1,0 +1,32 @@
+/*
+Add here the styles that you want to apply to customize the portal for your theme. 
+This css will be dynamically loaded at the end of the head so it will take precedence 
+over other css rules (override only what you want to change)
+*/
+
+#headerwrap {
+	min-height: 300px;
+}
+
+
+#headerwrap h1 {
+	font-size: 100px;
+	margin: 0px;
+}
+
+#homeHeaderEmptyRow {
+	display: none;
+}
+
+#headerwrap h2 {
+	padding-bottom: 15px;
+}
+
+#headerwrap.initiationBckg h2,
+#headerwrap.initiationBckg h1{
+	color: #ffffff;
+}
+
+#headerTitleBar {
+    background-color: rgba(0, 0, 0, 0.1);
+}

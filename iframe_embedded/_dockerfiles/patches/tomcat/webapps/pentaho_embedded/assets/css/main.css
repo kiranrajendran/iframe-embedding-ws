@@ -858,3 +858,11 @@ li.widgetSelector-item{
 
 
 /*ADDING LOGIN POPUP*/
+
+ .command_help{
+	display:none; 
+ }
+ 
+ .hide{
+	 display:none;
+ }

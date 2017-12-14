@@ -34,9 +34,9 @@ function() {
 	var cfgFile;
 	
 	var config_url= getConfigFilePath();
-	$.getScript(config_url, function() {
+	$.getScript(config_url+"/config.js", function() {
 		cfgFile = portalConfig;
-		whenConfigIsReady();
+		whenConfigIsReady(config_url);
 	});
 	
 	function getConfigFilePath(){
@@ -48,11 +48,11 @@ function() {
 		}
 		
 		theme=theme?theme:"default";
-		var path = 'assets/themes/'+theme+'/config.js';
+		var path = 'assets/themes/'+theme;
 		return path;
 	}
 	
-	function whenConfigIsReady(){
+	function whenConfigIsReady(config_url){
 				
 		$("#homePageTitle").html(cfgFile.homePage.title);
 		$("#homePageSubTitle").html(cfgFile.homePage.subTitle);
@@ -69,6 +69,8 @@ function() {
 		if(isAdmin(username)){
 			$( ".adminFeature").addClass("show");
 		}
+		
+		$("head link[rel='stylesheet']").last().after("<link rel='stylesheet' href='"+config_url+"/overrides_styles.css' type='text/css' media='screen'>");
 		
 		
 		/*CLICK ON browse resources*/
@@ -363,11 +365,11 @@ function() {
 			setDemoLink(6,cfgFile.homePage.demoResources.demo6.path);
 			
 			$(window).load(function() {
-			$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
-			//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
-				console.log('This javascript function is defined in the external portal. You double clicked on '+e.value)
+				$("#demoFrame1")[0].contentWindow.pentahoDashboardController.cdfDashboard.on('cdf cdf:preExecution', function(e) {
+				//I could want to keep a count of all the times my dashboard was visited, for statistical purposes
+					console.log('This javascript function is defined in the external portal. You double clicked on '+e.value)
+				});
 			});
-		  });
 		}
 			
 		setAdminLink(1,".prpti");

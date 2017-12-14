@@ -23,13 +23,15 @@ function PentahoRestApis(serverUrl, pentaho_user, pentaho_pwd) {
             ".prpt": "/api/repos/<PATH>/viewer",
             ".xanalyzer": "/api/repos/<PATH>/viewer",
             ".xdash": "/api/repos/<PATH>/viewer",
-            ".prpti": "/api/repos/<PATH>/prpti.view"
+            ".prpti": "/api/repos/<PATH>/prpti.view",
+			".wcdf": "/api/repos/<PATH>/generatedContent"
         },
         "edit": {
             ".prpt": "/api/repos/<PATH>/viewer",
             ".xanalyzer": "/api/repos/<PATH>/editor",
             ".xdash": "/api/repos/<PATH>/editor",
-            ".prpti": "/api/repos/<PATH>/prpti.edit"
+            ".prpti": "/api/repos/<PATH>/prpti.edit",
+			".wcdf": "/api/repos/<PATH>/wcdf.edit"
         },
         "create": {
             //".prpt" : "/api/repos/<PATH>/generatedContent",
