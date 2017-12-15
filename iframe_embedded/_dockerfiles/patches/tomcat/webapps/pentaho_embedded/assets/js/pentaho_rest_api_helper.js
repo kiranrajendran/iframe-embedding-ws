@@ -37,7 +37,8 @@ function PentahoRestApis(serverUrl, pentaho_user, pentaho_pwd) {
             //".prpt" : "/api/repos/<PATH>/generatedContent",
             ".xanalyzer": "/api/repos/xanalyzer/service/selectSchema",
             ".xdash": "/api/repos/dashboards/editor",
-            ".prpti": "/api/repos/pentaho-interactive-reporting/prpti.new"
+            ".prpti": "/api/repos/pentaho-interactive-reporting/prpti.new",
+			".wcdf": "/api/repos/wcdf/new"
         },
         "repository": {
             "file_list": "/api/repo/files/<PATH>/tree"
