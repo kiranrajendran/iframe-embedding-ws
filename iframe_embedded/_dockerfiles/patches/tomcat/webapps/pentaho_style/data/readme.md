@@ -1,1 +1,0 @@
-In this case I am not needing any data, but this is useful to know. This path is then usable from PDI as variable   ${MY_DATA_DIR}/

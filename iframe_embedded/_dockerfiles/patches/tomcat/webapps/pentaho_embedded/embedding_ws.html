@@ -171,7 +171,7 @@ Author: Gianluca Natali
 				<br>
 				<h4>Task 1 - Download the workshop material</h4>	
 				<p><ol>
-					<li>Download the following zip file</li>
+					<li>Download the following <a href="assets/files/pentaho_embedded.zip" target="_blank">zip file</a></li>
 					<li>Copy the folder <i>pentaho_embedded</i> in your local Pentaho path:
 <pre class="brush: xml;">
 &lt;!-- LAB_1.1 --&gt; 
@@ -231,11 +231,25 @@ requestParameterAuthenticationEnabled=true
 				<h3><bold>LAB 1</bold> <br/></h3>
 				<h4 class="subtitleP">Test the Embedded sample!</h4>
 				<br>
-				<h4>Task 1 - Open the embedded sample url</h4>	
+				<h4>Task 1 - Discover the Pentaho User Console</h4>	
+				<p>(You can skip this task if you are already familiar with it)<br>
+				<ol>
+					<li>Before testing the sample embedded portal, let's have a look at the Pentaho User Console</li>
+					<li></li>
+					<li>Go to the <a href="/pentaho" target="_blank">Pentaho Server</a></li>
+					<li>On the Menu select Browse Files</li>
+					<li>On the Folders panel select Public -> Steel Wheels</li>
+					<li>On the Files panel select Sales Performance (dashboard)</li>
+					<li>Click <span class="showImage"><img src="assets/img/ws/013.png"> Open</span></li>
+					<li>Now you have an idea of how Pentaho User Console look like</li>
+				</ol>
+				Feel free to test this sample as you like, in the tasks below we'll guide you in testing the main features
+				</p>
+				<br>
+				<h4>Task 2 - Open the embedded portal sample</h4>	
 				<p>Now we'll play with an example of website that embed Pentaho<br>
 				<ol>
-					<li>Go to the <a href="/pentaho/" target="_blank">Pentaho Server</a></li>
-					<li>Now go to the sample at this <a href="/pentaho_embedded/" target="_blank">url</a></li>
+				<li>Let's open the sample at this <a href="/pentaho_embedded/" target="_blank">link</a></li>
 					<li>Notice that this a web application located outside of Pentaho and has <span class="showImage"><img src="assets/img/ws/002.png">4 pages of content</span>
 						<ul>
 							<li><b>Sales Performance</b>: A dashboard that was created with Pentaho Dashboard Designer showing Territory Sales, Sales Distribution by City, Orders by Country and Product Sales Distribution.. Notice that when you double click one of the pie slices that the other panels update with that filter</li>
@@ -249,7 +263,7 @@ requestParameterAuthenticationEnabled=true
 				Feel free to test this sample as you like, in the tasks below we'll guide you in testing the main features
 				</p>
 				<br>
-				<h4>Task 2 - View the content</h4>	
+				<h4>Task 3 - View the content</h4>	
 				<p>
 				<ol>
 					<li>By default you should be logged in as suzy, so you can only <span class="showImage"><img src="assets/img/ws/001.png">see content as viewer</span></li>
@@ -259,7 +273,7 @@ requestParameterAuthenticationEnabled=true
 
 				</p>
 				<br>
-				<h4>Task 3 - Create an Analysis Report</h4>	
+				<h4>Task 4 - Create an Analysis Report</h4>	
 				<p>
 				<ol>
 					<li>Now let's say you want to create some content... Click on the <span class="showImage"><img src="assets/img/ws/004.png">menu icon on the top right</span></li>
@@ -273,7 +287,7 @@ requestParameterAuthenticationEnabled=true
 
 				</p>
 				<br>
-				<h4>Task 4 - Create a Dashboard</h4>	
+				<h4>Task 5 - Create a Dashboard</h4>	
 				<p>
 				<ol>
 					<li>Click on New Dashboard</li>
@@ -285,12 +299,28 @@ requestParameterAuthenticationEnabled=true
 				</ol>
 
 				</p>
-				<h4>Task 5 - Review what you just created</h4>	
+				<br>
+				<h4>Task 6 - Review what you just created</h4>	
 				<p>
 				<ol>
 					<li>click on the BROWSE RESOURCES</li>
 					<li>You should see the dashboard you just created! Select it to visualize it in the portal in view mode</li>
 					<li>If you want you can login as a simple user (default suzy/password) and you will still see the new dasboard in the list of Browse Resources</li>
+				</ol>
+				</p>
+				<br>
+				<h4>Task 7 - Use a theme</h4>	
+				<p>
+				<ol>
+					<li>This portal offers Themes. This feature was implemented to make it easily reusable</li>
+					<li>You can create a sample embedded portal with your own Pentaho resources in a breeze!</li>
+					<li>Test the Hitachi Vantara theme: <br><a href="/pentaho_embedded?theme=vantara" target="_blank">/pentaho_embedded?theme=vantara</a></li>
+					<li>Test the default theme: <br><a href="/pentaho_embedded?theme=default" target="_blank">/pentaho_embedded?theme=default</a></li>
+					<li>Test the extended theme: <br><a href="/pentaho_embedded?theme=extended" target="_blank">/pentaho_embedded?theme=extended</a> (This theme requires additional resources in the Pentaho repository)</li>
+					<li>To have an idea of what can be configured in a theme have a look at the <a href="assets/themes/default/config.js" target="_blank">configuration file</a> that defines a theme</li>
+					<li>Themes are in the folder: /webapps/pentaho_embedded/assets/themes</li>
+					<li>To create a new theme just copy one of the existent folder and change the name</li>
+					<li>(these themes are not the same as Pentaho User Console themes that we discuss in the bonus labs)</li>
 				</ol>
 				</p>
 				</div>
@@ -773,7 +803,6 @@ pentahoSrv.loadFileList(folderPath,"*.xanalyzer%7C*.prpti","resourceSelDashDiv",
 				<ul>
 					<li>Download the hitachi theme (<a href="assets/files/hitachi_theme.zip" target="_blank">Download</a>)</li>
 					<li>All you need to do is to copy the content into your installation directory</li>
-					<li>Get to the next level by customizing the theme configuration, you will find a tutorial in <a href="assets/files/Create_a_Custom_Theme_for_Pentaho_Server.pdf" target="_blank">this PDF </a></li>
 				</ul>
 				</p>
 				<br>
@@ -794,15 +823,18 @@ cd /cygdrive/c/themes/
 					</li>
 					<li>Hover <span class="showImage"><img src="assets/img/ws/012.png">here</span> to see an example of running the script</li>
 					
-
-					
-					
-					
 				</ul>
 				</p>
 				<br>
 				<p>
-				<h4>Task 3 - Create a custom Visualization: Bar/D3 Visualization </h4>	
+				<h4>Task 3 - Learn more about themes</h4>	
+				<ul>
+					<li>If you are interested in learning more about Pentaho themes have a look at <a href="assets/files/Create_a_Custom_Theme_for_Pentaho_Server.pdf" target="_blank">this PDF tutorial</a></li>
+				</ul>
+				</p>
+				<br>
+				<p>
+				<h4>Task 4 - Create a custom Visualization: Bar/D3 Visualization </h4>	
 				<ul>
 					<li><a href="http://pentaho.github.io/pentaho-platform-plugin-common-ui/platform/visual/samples/bar-d3-sandbox/" 
 							target="_blank">Visualization API - Bar/D3 Visualization in Sandbox</a></li>
