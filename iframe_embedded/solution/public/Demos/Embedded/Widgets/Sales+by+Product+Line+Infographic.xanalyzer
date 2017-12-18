@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <reportRecord xmlns="http://www.pentaho.com">
-    <commonStorageAttributes createdBy="admin" updatedBy="admin" created="2017-09-13T20:51:51.172Z" update="2017-09-13T20:51:51.175Z">
+    <commonStorageAttributes createdBy="admin" updatedBy="admin" created="2017-09-13T20:51:51.172Z" update="2017-12-18T13:00:36.831Z">
         <path name="Sales by Product Line Infographic" folder="/public/Demos/Embedded/Widgets/Sales by Product Line Infographic.xanalyzer"/>
     </commonStorageAttributes>
     <report catalog="SteelWheels" cube="SteelWheelsSales" reportTypeEnum="JSON" showRowGrandTotal="false" showColumnGrandTotal="false" useNonVisualTotals="false" showEmptyEnum="SHOW_MEASURE" emptyCellDisplay="-" showDrillLinks="false" version="11" autoRefresh="true" freezeColumns="true" freezeRows="true">
@@ -11,7 +11,19 @@
         <rowAttributes>
             <attribute formula="[Product].[Line]" showSubtotal="false" sortOrderEnum="ASC" gembarId="category" gembarOrdinal="0"/>
         </rowAttributes>
-        <filters/>
+        <filters>
+            <filter formula="[Markets].[Territory]" viewFilterEnum="MULTIPLE">
+                <predicates>
+                    <predicate ordinal="1" operatorEnum="EQUAL" parameterName="TERRITORY_P">
+                        <member formula="[Markets].[APAC]" caption="APAC" pos="0"/>
+                        <member formula="[Markets].[EMEA]" caption="EMEA" pos="0"/>
+                        <member formula="[Markets].[Japan]" caption="Japan" pos="0"/>
+                        <member formula="[Markets].[NA]" caption="NA" pos="0"/>
+                        <member formula="[Markets].[#null]" caption="Not Available" pos="0"/>
+                    </predicate>
+                </predicates>
+            </filter>
+        </filters>
         <chartOptions vizApiVersion="3.0" chartType="CUSTOM" customChartType="pentaho-visual-samples-svg_0.0.1/modelProductLine" legendPosition="RIGHT" showLegend="true" autoRange="true" displayUnits="UNITS_0" autoRangeSecondary="true" displayUnitsSecondary="UNITS_0" lineWidth="2" lineShape="CIRCLE" maxValues="100" backgroundColor="#ffffff" labelColor="#000000" labelSize="12" backgroundFill="NONE" maxChartsPerRow="3" backgroundColorEnd="#ffffff" labelStyle="PLAIN" legendBackgroundColor="#ffffff" legendSize="12" legendColor="#000000" legendStyle="PLAIN" labelFontFamily="Default" legendFontFamily="Default"/>
         <selectionFilters/>
         <selectionItems/>
@@ -21,6 +33,6 @@
     <uiAttributes showFieldList="true" showFieldLayout="true" showFilterPanel="false" fieldListView="CMDVIEWCATEGORY">
         <rowFieldWidths/>
         <columnDataFieldWidths/>
-        <pluginData>[{"width":1631,"height":860,"model":{"_":"pentaho-visual-samples-svg_0.0.1/modelProductLine","category":{"attributes":["[Product].[Line]"]},"measure":{"attributes":["[MEASURE:0]"]}}}]</pluginData>
+        <pluginData>[{"model":{"_":"pentaho-visual-samples-svg_0.0.1/modelProductLine"}}]</pluginData>
     </uiAttributes>
 </reportRecord>
