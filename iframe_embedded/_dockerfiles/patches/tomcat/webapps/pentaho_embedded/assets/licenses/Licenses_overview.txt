@@ -1,0 +1,9 @@
+Libraries and asset used:
+
+Bootstrap : http://www.apache.org/licenses/LICENSE-2.0
+jQuery : MIT License - jquery.org/license
+Persist.js : MIT License - https://github.com/jeremydurham/persist-js/blob/master/COPYING
+Syntaxhighlighter : MIT License https://github.com/syntaxhighlighter/syntaxhighlighter/blob/master/MIT-LICENSE
+smoothscrooll.js : MIT License 
+underscore.js : MIT LICENSE : http://underscorejs.org
+ace.js. BSD License
