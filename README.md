@@ -41,3 +41,11 @@ Any feedback is really appreciated, ideas for the next version are welcome 😊!
  
 Special thanks to @Joao Gameiro for his help with CBF2 and Viz API 😊
 
+## License and Copyright
+ 
+All material in this repository are Copyright 2002-2017 Hitachi Vantara. All code is licensed as Apache 2.0 unless explicitly stated.
+ 
+## Support Statement
+ 
+This work is at Stage 1 : Development Phase: Start-up phase of an internal project. Usually a Labs experiment. (Unsupported)
+ 
